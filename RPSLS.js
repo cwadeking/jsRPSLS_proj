@@ -2,19 +2,22 @@
 class Player{
     
     constructor(){
-        let score = 0;
+        this.score = 0;
         this.gestures = ["rock", "paper", "scissors", "lizard", "spock"];
+        this.chosenGesture = "";
     }
     chooseGesture(){}
     
-    displayGestures(){
-        for(let i = 0; i < this.gestures.length; i++){
-            alert(`These are the allowed gestures to choose: `);
-            alert(`${this.gestures[i]}`);
-            
-        }
-    }
     
+    displayGestures(){
+        let counter = 0;
+        alert("The following is a list of gestures you can select from");
+        alert(this.gestures.map(function(el){
+            counter++
+            return counter + ":" + el;
+        }).join("\n"));
+    }
+     
 }
 
 class Human extends Player{
@@ -24,8 +27,9 @@ class Human extends Player{
         
         
     }
-    ChooseGesture(){
-        
+    chooseGesture(){        
+        this.chosenGesture = prompt("Pick a number", this.displayGestures());
+        this.validateGestureChosen(this.chosenGesture);        
     }
 }
 
@@ -68,4 +72,4 @@ class Game{
 }
                 
 let testPlayer = new Human();
-testPlayer.displayGestures();
+testPlayer.chooseGesture();
