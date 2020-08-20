@@ -4,11 +4,10 @@ class Player{
     constructor(){
         this.score = 0;
         this.gestures = ["rock", "paper", "scissors", "lizard", "spock"];
-        this.chosenGesture = "";
+        this.chosenGesture = this.chooseGesture;
     }
     chooseGesture(){}
-    
-    
+        
     displayGestures(){
         let counter = 0;
         alert("The following is a list of gestures you can select from");
@@ -17,7 +16,6 @@ class Player{
             return counter + ":" + el;
         }).join("\n"));
     }
-     
 }
 
 class Human extends Player{
@@ -28,15 +26,28 @@ class Human extends Player{
         
     }
     chooseGesture(){        
-        this.chosenGesture = prompt("Pick a number", this.displayGestures());
-        this.validateGestureChosen(this.chosenGesture);        
+        this.numberAssociatedWithGesture = prompt("Pick a number", this.displayGestures());
+        while(!validateNumberChosen(this.numberAssociatedWithGesture, 0, this.gestures.length)){
+            this.chooseGesture();
+        }
+        return this.gestures[this.numberAssociatedWithGesture];        
     }
+
+    
 }
 
 class Computer extends Player{
     
     constructor(){
         super()
+    }
+
+    randomInteger(maxInteger){
+        let pickedInteger = Math.floor(Math.random() * maxInteger);
+        return pickedInteger;
+    }
+    chooseGesture(){
+        this.chosenGesture = this.gestures[this.randomInteger(this.gestures.length)];
     }
 }
 
@@ -49,8 +60,12 @@ class Game{
     }
     
     selectGameType(){
+        let outOfBoundsSelectionMinimum = 0;
+        let outOfBoundsSelectionMaximum = 4;
         let gameSelection = prompt("There are three game modes.  Press 1 for Human vs. Computer, 2 for Human vs. Human, and 3 for Computer vs. Computer");
-        
+        while(!validateNumberChosen(gameSelection, 0, 4)){
+            this.selectGameType();
+        }
         switch(gameSelection){
             case "1":
                 playerOne = new Human();
@@ -64,12 +79,17 @@ class Game{
                 playerOne = new Computer();
                 playerOne = new Computer();
                 break;
-            default:
-                prompt("That was not a proper selection, choose again");
-                this.selectGameType();
         }
     }
 }
-                
+              
 let testPlayer = new Human();
 testPlayer.chooseGesture();
+
+function validateNumberChosen(validNumber, outOfBoundsMinimum, outOfBoundsMaximum){
+    if (!isNaN(validNumber) || validNumber > outOfBoundsMinimum || validNumber < outOfBoundsMaximum ) {
+        return true;
+    } else {
+        return false;
+    }
+}
