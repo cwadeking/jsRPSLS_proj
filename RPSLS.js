@@ -59,27 +59,43 @@ class Game{
         this.scoreLimit;
     }
     
-    selectGameType(){
+    selectGameType(gameSelection = null){
         let outOfBoundsSelectionMinimum = 0;
         let outOfBoundsSelectionMaximum = 4;
-        let gameSelection = prompt("There are three game modes.  Press 1 for Human vs. Computer, 2 for Human vs. Human, and 3 for Computer vs. Computer");
-        while(!validateNumberChosen(gameSelection, outOfBoundsSelectionMinimum, outOfBoundsSelectionMaximum)){
-            this.selectGameType();
+        if(gameSelection === null)
+        {
+            gameSelection = prompt("There are three game modes.  Press 1 for Human vs. Computer, 2 for Human vs. Human, and 3 for Computer vs. Computer");
+            while(!validateNumberChosen(gameSelection, outOfBoundsSelectionMinimum, outOfBoundsSelectionMaximum)){
+                this.selectGameType();
+            }
         }
-        switch(gameSelection){
-            case "1":
-                playerOne = new Human();
-                playerTwo = new Computer();
-                break;
-            case "2":
-                playerOne = new Human();
-                playerTwo = new Human();
-                break;
-            case "3":
-                playerOne = new Computer();
-                playerOne = new Computer();
-                break;
-        }
+            switch(gameSelection){
+                case "1":
+                    this.playerOne = new Human();
+                    this.playerTwo = new Computer();
+                    break;
+                case "2":
+                    this.playerOne = new Human();
+                    this.playerTwo = new Human();
+                    break;
+                case "3":
+                    this.playerOne = new Computer();
+                    this.playerOne = new Computer();
+                    break;
+            }
+    }
+
+    onePlayerGame(){
+        playerOne = new Human();
+        playerTwo = new Computer();
+    }
+    twoPlayerGame(){
+        playerOne = new Human();
+        playerTwo = new Human();
+    }
+    simulationGame(){
+        playerOne = new Computer();
+        playerTwo = new Computer();
     }
     compareGestures(playerOneGesture, playerTwoGesture){
         alert(`${playerOne} chose ${playerOneGesture} and ${playerTwo} chose ${playerTwoGesture}`)
@@ -140,8 +156,10 @@ class Game{
         this.gamePlay();
     }
 }
-              
-//helper class creation???
+
+let game = new Game();
+
+
 
 function validateNumberChosen(validNumber, outOfBoundsMinimum, outOfBoundsMaximum){
     if (!isNaN(validNumber) || validNumber > outOfBoundsMinimum || validNumber < outOfBoundsMaximum ) {

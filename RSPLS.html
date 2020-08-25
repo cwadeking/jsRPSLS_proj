@@ -1,16 +1,51 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head>
-  <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
+    <title>Rock Paper Scissors Lizard Spock</title>
+    <link rel = "icon" src = "favicon\favicon.ico">
+    <link rel = "stylesheet" type= "text/css" href = "styles.css">
+    
+     
+  </head>
 
-  <title>RockPaperScissorsLizardSpock</title>
-  
+  <body>
+    <script src="RPSLS.js"></script>
 
-  
-</head>
+    <div class = "row">
+      <div class = "column">
+        <img src="rock.png" alt="rock" style="width:60%">
+      </div>
 
-<body>
-  <script src="RPSLS.js"></script>
-</body>
+      <div class = "column">
+        <img src="paper.png" alt="paper" style="width:50%">
+      </div>
+
+      <div class = "column">
+        <img src="scissors.png" alt="scissors" style="width:100%">
+      </div>
+
+      <div class = "column">
+        <img src="lizard.jpg" alt="lizard" style="width:60%">
+      </div>
+
+      <div class = "column">
+        <img src="spockHand.png" alt="spockhand" style="width:65%">
+      </div>
+
+    </div>
+
+    <div class = "centerButtons">
+      <div class = "button">
+        <button type="button" onclick="game.runGame()">Start Game</button>
+      </div>  
+      <div class = "button">
+        <button type="button" onclick="game.selectGameType('1')">One Player Mode</button>
+      </div>
+      <div class = "button">
+        <button type="button" onclick="game.selectGameType('2')">Two Player Mode</button>
+      </div>
+  </div>
+  </body>
 </html>
