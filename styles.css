@@ -42,3 +42,15 @@ img:hover {
 .button{
   padding: 10px;
 }
+
+.textDisplayBox{
+  text-align: center;
+  height : 20%;
+  width : 100%;
+}
+
+#myTextBox{
+  text-align: center;
+  height: 100px;
+  width : 50%;
+}

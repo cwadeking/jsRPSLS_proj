@@ -15,7 +15,7 @@
 
     <div class = "row">
       <div class = "column">
-        <img src="rock.png" alt="rock" style="width:60%">
+        <img src="rock.png" alt="rock" style="width:50%">
       </div>
 
       <div class = "column">
@@ -37,15 +37,19 @@
     </div>
 
     <div class = "centerButtons">
-      <div class = "button">
-        <button type="button" onclick="game.runGame()">Start Game</button>
-      </div>  
+      
       <div class = "button">
         <button type="button" onclick="game.selectGameType('1')">One Player Mode</button>
       </div>
       <div class = "button">
         <button type="button" onclick="game.selectGameType('2')">Two Player Mode</button>
       </div>
-  </div>
+    </div>
+
+    <div class = "row">
+      <div class = "textDisplayBox">
+        <input type="text" id="myTextBox" readonly>
+      </div>
+    </div>  
   </body>
 </html>

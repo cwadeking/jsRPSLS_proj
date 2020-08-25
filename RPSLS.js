@@ -69,20 +69,22 @@ class Game{
                 this.selectGameType();
             }
         }
-            switch(gameSelection){
-                case "1":
-                    this.playerOne = new Human();
-                    this.playerTwo = new Computer();
-                    break;
-                case "2":
-                    this.playerOne = new Human();
-                    this.playerTwo = new Human();
-                    break;
-                case "3":
-                    this.playerOne = new Computer();
-                    this.playerOne = new Computer();
-                    break;
-            }
+        switch(gameSelection){
+            case "1":
+                this.playerOne = new Human();
+                this.playerTwo = new Computer();
+                this.runGame();
+                break;
+            case "2":
+                this.playerOne = new Human();
+                this.playerTwo = new Human();
+                this.runGame();
+                break;
+            case "3":
+                this.playerOne = new Computer();
+                this.playerOne = new Computer();
+                break;
+        }
     }
 
     onePlayerGame(){
@@ -150,9 +152,7 @@ class Game{
 
     }
     runGame(){
-        //display rules
-        this.selectGameType();
-        this.scoreLimit = this.setScoreLimit();
+        this.setScoreLimit();
         this.gamePlay();
     }
 }
@@ -168,3 +168,6 @@ function validateNumberChosen(validNumber, outOfBoundsMinimum, outOfBoundsMaximu
         return false;
     }
 }
+function displayToTextBox(message) {
+    document.getElementById("myTextBox").innerHTML = message;
+  }
